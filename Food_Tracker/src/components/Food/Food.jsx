@@ -1,7 +1,7 @@
 import React from "react";
 
 export const Food = ({
-  //Define the structure for each 'food' object to be constructed from database
+  //Define the structure for each 'food' object to be destructured from API call
   food: {
     id,
     name,
