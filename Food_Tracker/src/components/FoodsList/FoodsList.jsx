@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Food } from "../Food/Food";
-
+import { Button } from "react-bootstrap";
 export const FoodsList = () => {
   //Initialize foods state to null
   const [allFoods, setFoods] = useState(null);
@@ -42,7 +42,9 @@ export const FoodsList = () => {
         <div className="d-flex flex-row">
           {/* map the 'foods' array into a list */}
           {allFoods.map((foodItem) => (
-            <Food key={foodItem._id} food={foodItem} />
+            <div key={foodItem._id}>
+              <Food food={foodItem} />
+            </div>
           ))}
         </div>
       </section>

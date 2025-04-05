@@ -3,12 +3,9 @@ import Nav from "react-bootstrap/nav";
 function Header() {
   return (
     <div className="fixed-top ms-1 bg-black">
-      <Nav
-        activeKey="/home"
-        onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
-      >
+      <Nav activeKey="/">
         <Nav.Item>
-          <Nav.Link href="/home">Active</Nav.Link>
+          <Nav.Link href="/">Active</Nav.Link>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link eventKey="link-1">Link</Nav.Link>
