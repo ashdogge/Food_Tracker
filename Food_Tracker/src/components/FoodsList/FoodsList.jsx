@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Food } from "../Food/Food";
-import { Button } from "react-bootstrap";
+import FoodButtons from "../FoodButtons/FoodButtons";
 export const FoodsList = () => {
-  //Initialize foods state to null
+  // << .Initialize foods state to null >>
+
   const [allFoods, setFoods] = useState(null);
-  //State for whether or not data is being retrieved from the API
+  // << State for whether or not data is being retrieved from the API >>
+
   const [loading, setLoading] = useState(true);
-  //State to catch errors
+  //<< State to catch errors >>
+
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -37,18 +40,17 @@ export const FoodsList = () => {
   }
   // Define the layout to display each food item within
   return (
-    <div className="table-responsive">
-      <section className="flex-table">
-        <div className="d-flex flex-row">
-          {/* map the 'foods' array into a list */}
-          {allFoods.map((foodItem) => (
-            <div key={foodItem._id}>
-              <Food food={foodItem} />
-            </div>
-          ))}
+    <section className="d-flex flex-wrap">
+      {/* map the 'foods' array into a list */}
+      {allFoods.map((foodData) => (
+        <div key={foodData._id} className="ms-1">
+          <div className="display-6">
+            {foodData.name} <FoodButtons food={foodData} />
+          </div>
+          <Food food={foodData} />
         </div>
-      </section>
-    </div>
+      ))}
+    </section>
   );
 };
 

@@ -1,55 +1,64 @@
 import React from "react";
-import { Button } from "react-bootstrap";
-import { useNavigate } from "react-router";
+import { Table } from "react-bootstrap";
+import FoodButtons from "../FoodButtons/FoodButtons";
 
-export const Food = ({
-  food: {
+export const Food = ({ food }) => {
+  const {
     _id,
     name,
     calories,
     fat,
     sodium,
     potassium,
-    carbs: { total, fiber, sugar },
+    carbs: { total, sugar, fiber },
     protein,
-  },
-}) => {
-  const navigate = useNavigate();
-
-  const editNav = () => {
-    navigate(`/food/edit/${_id}`, {
-      state: {
-        food: {
-          _id,
-          name,
-          calories,
-          fat,
-          sodium,
-          potassium,
-          carbs: { total, fiber, sugar },
-          protein,
-        },
-      },
-    });
-  };
+  } = food;
 
   return (
-    <div className="border border-black border-5">
-      <div className="flex-column d-flex align-items-start">
-        <div className="fw-bold">{name}</div>
-        <div>Calories: {calories}</div>
-        <br />
-        <div>Fat: {fat}</div>
-        <div>Sodium: {sodium}</div>
-        <div>Potassium: {potassium}</div>
-        <div>
-          Carbs: {total}, Fiber: {fiber} Sugar: {sugar}
-        </div>
-        <div>Protein: {protein}</div>
-      </div>
-      <Button onClick={editNav}>Edit</Button>
-      <Button variant="danger">Delete</Button>
-    </div>
+    <Table striped bordered hover>
+      <tbody className="text-start">
+        <tr>
+          <td className="fw-semibold">Calories:</td>
+          <td>{calories}</td>
+          <td className="fw-bold">kcal</td>
+        </tr>
+        <tr>
+          <td>Fat:</td>
+          <td>{fat}</td>
+          <td className="fw-bold">g</td>
+        </tr>
+        <tr>
+          <td>Sodium:</td>
+          <td>{sodium}</td>
+          <td className="fw-bold">mg</td>
+        </tr>
+        <tr>
+          <td>Potassium:</td>
+          <td>{potassium}</td>
+          <td className="fw-bold">mg</td>
+        </tr>
+        <tr>
+          <td>Carbs:</td>
+          <td>{total}</td>
+          <td className="fw-bold">g</td>
+        </tr>
+        <tr>
+          <td>&nbsp;&nbsp;&nbsp; Sugars</td>
+          <td>{sugar}</td>
+          <td className="fw-bold">g</td>
+        </tr>
+        <tr>
+          <td>&nbsp;&nbsp;&nbsp; Fiber</td>
+          <td>{fiber}</td>
+          <td className="fw-bold">g</td>
+        </tr>
+        <tr>
+          <td>Protein</td>
+          <td>{protein}</td>
+          <td className="fw-bold">g</td>
+        </tr>
+      </tbody>
+    </Table>
   );
 };
 
