@@ -52,19 +52,31 @@ export const FoodButtons = ({
     });
   };
 
+  async function addEntry(_id) {
+    const res = await fetch("/api/entries/add", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        food: _id,
+      }),
+    });
+    if (!res.ok) throw new Error("Failed to add entry");
+    return await res.json();
+  }
+
   return (
-    <div className="d-flex link-underline-opacity-0 ms-2 me-2">
+    <div className="d-flex link-underline-opacity-0 ms-2 me-2 fs-6">
       <a
-        className="fs-6 link-primary order-1 me-auto"
-        onClick={deleteNav}
+        className="link-primary me-auto"
+        onClick={() => addEntry(_id)}
         href="#"
       >
         ✚
       </a>
-      <a className="fs-6 link-light order-2 me-1" onClick={editNav} href="#">
+      <a className=" link-light me-1" onClick={editNav} href="#">
         ✎
       </a>
-      <a className="fs-6 link-danger order-3" onClick={deleteNav} href="#">
+      <a className="link-danger " onClick={deleteNav} href="#">
         ✕
       </a>
     </div>

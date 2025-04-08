@@ -12,6 +12,7 @@ export const FoodsList = () => {
   //<< State to catch errors >>
 
   const [error, setError] = useState(null);
+  // << useEffect hook to fetch list of foods >>
 
   useEffect(() => {
     const fetchData = async () => {
@@ -47,12 +48,17 @@ export const FoodsList = () => {
       </section>
     );
   }
-  // Define the layout to display each food item within
+  // << Define the layout to display each food item within >>
+  // << TODO: Add a 'message' component to display 'success' or
+  // 'error' messages like in Food Form>>
   return (
     <section className="d-flex flex-wrap mt-5 p-5 bg-dark">
-      {/* map the 'foods' array into a list */}
+      {/* << map the 'foods' array into a list of >> */}
       {allFoods.map((foodData) => (
         <div className="col-lg-3 col-sm-6" key={foodData._id}>
+          {/* << Use the 'Food' react component, passing the 'foodData'
+          retrieved from API into the 'food' prop >> */}
+
           <Food food={foodData} />
         </div>
       ))}
