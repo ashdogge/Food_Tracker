@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Food } from "../Food/Food";
 import FoodButtons from "../FoodButtons/FoodButtons";
+import { Button } from "react-bootstrap";
 export const FoodsList = () => {
   // << .Initialize foods state to null >>
 
@@ -17,6 +18,7 @@ export const FoodsList = () => {
       setLoading(true);
       try {
         const response = await fetch("/api/foods");
+
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -38,15 +40,19 @@ export const FoodsList = () => {
   if (error) {
     return <p>Error: {error.message}</p>;
   }
+  if (allFoods.length === 0) {
+    return (
+      <section>
+        <div className="display-1">No foods in database.</div>
+      </section>
+    );
+  }
   // Define the layout to display each food item within
   return (
-    <section className="d-flex flex-wrap">
+    <section className="d-flex flex-wrap mt-5 p-5 bg-dark">
       {/* map the 'foods' array into a list */}
       {allFoods.map((foodData) => (
-        <div key={foodData._id} className="ms-1">
-          <div className="display-6">
-            {foodData.name} <FoodButtons food={foodData} />
-          </div>
+        <div className="col-lg-3 col-sm-6" key={foodData._id}>
           <Food food={foodData} />
         </div>
       ))}

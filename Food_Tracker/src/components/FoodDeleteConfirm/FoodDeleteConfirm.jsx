@@ -70,7 +70,7 @@ const FoodDeleteConfirm = () => {
       const timer = setTimeout(() => {
         navigate("/");
       }, 2000);
-      return () => clearTimeout(timer); // Clean up on unmount
+      return () => clearTimeout(timer);
     }
   }, [message, navigate]);
 
