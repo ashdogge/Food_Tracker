@@ -2,7 +2,7 @@ import Nav from "react-bootstrap/nav";
 
 function Header() {
   return (
-    <div className="fixed-top ms-1 me-1 bg-body-secondary">
+    <div className="fixed-top ms-1 me-1">
       <Nav activeKey="/">
         <Nav.Item>
           <Nav.Link href="/">All Foods</Nav.Link>

@@ -53,22 +53,21 @@ export const FoodButtons = ({
   };
 
   return (
-    <ButtonGroup className="">
+    <div className="d-flex link-underline-opacity-0 ms-2 me-2">
       <a
-        className="fs-6 link-dark link-underline-opacity-0 me-1"
-        onClick={editNav}
-        href="#"
-      >
-        ✎
-      </a>
-      <a
-        className="fs-6 link-danger link-underline-opacity-0"
+        className="fs-6 link-primary order-1 me-auto"
         onClick={deleteNav}
         href="#"
       >
+        ✚
+      </a>
+      <a className="fs-6 link-light order-2 me-1" onClick={editNav} href="#">
+        ✎
+      </a>
+      <a className="fs-6 link-danger order-3" onClick={deleteNav} href="#">
         ✕
       </a>
-    </ButtonGroup>
+    </div>
   );
 };
 export default FoodButtons;

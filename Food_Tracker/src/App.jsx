@@ -8,9 +8,10 @@ import FoodsList from "./components/FoodsList";
 import { Routes, Route } from "react-router";
 import FoodForm from "./components/FoodForm/FoodForm.jsx";
 import FoodDeleteConfirm from "./components/FoodDeleteConfirm/FoodDeleteConfirm.jsx";
+import "./styles.css";
 function App() {
   return (
-    <div className="container">
+    <div className="container textColor">
       <Header />
       <Routes>
         <Route path="/" element={<FoodsList />} />

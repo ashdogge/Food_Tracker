@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router";
+import { useLocation, useNavigate, useParams } from "react-router";
 import { Form, InputGroup, Button, Alert } from "react-bootstrap";
 
 const FoodForm = () => {
@@ -35,6 +35,7 @@ const FoodForm = () => {
 
     // << Wrap in 'if' to avoid trying to fetch id if no id
     // is passed: IE, creating new food document >>
+
     if (id) {
       if (id && !foodData) {
         const fetchData = async () => {
@@ -55,6 +56,7 @@ const FoodForm = () => {
         setLoading(false);
       } else {
         // << If foodData exists, initialize the form state with it >>
+
         setName(foodData.name);
         setCalories(foodData.calories);
         setFat(foodData.fat);
@@ -69,7 +71,15 @@ const FoodForm = () => {
   }, [id, foodData]);
 
   // << Handler for form submission >>
-
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (message) {
+      const timer = setTimeout(() => {
+        navigate("/");
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [message, navigate]);
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
@@ -102,6 +112,8 @@ const FoodForm = () => {
       // << if an id is present, use /foods/edit and PUT
       // else use the add endpoint and post >>
 
+      setLoading(true);
+
       let apiEndpoint = "/api/foods/edit";
       let method = "PUT";
       if (!id) {
@@ -118,6 +130,7 @@ const FoodForm = () => {
       // << If the response is not 200, display the error >>
 
       if (!response.ok) {
+        setLoading(false);
         const errorData = await response.json();
         throw new Error(
           errorData.error || `HTTP error! status: ${response.status}`
@@ -125,6 +138,9 @@ const FoodForm = () => {
       }
       // << Display success message >>
       setMessage("Food saved successfully!");
+
+      // << Page redirects, leave Loading disabled >>
+      // setLoading(false);
     } catch (err) {
       console.error("Error saving food:", err);
       setError(err);
@@ -134,7 +150,7 @@ const FoodForm = () => {
   return (
     // << Display for the update form >>
 
-    <Form onSubmit={handleSubmit} className="border border-black form-control">
+    <Form onSubmit={handleSubmit} className=" form-control text-light">
       <h2 className="mb-5 display-4">{id ? "Edit" : "Create"}</h2>
 
       {message && <Alert variant="success">{message}</Alert>}
@@ -155,6 +171,7 @@ const FoodForm = () => {
           value={calories}
           onChange={(e) => setCalories(e.target.value)}
         />
+        <InputGroup.Text>kcal</InputGroup.Text>
       </InputGroup>
 
       <InputGroup>

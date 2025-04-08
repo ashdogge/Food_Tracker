@@ -1,0 +1,47 @@
+.textColor {
+  color: rgb(230, 228, 222);
+}
+body {
+  background-color: rgb(33, 37, 41);
+}
+.card {
+  background-color: rgb(43, 48, 53) !important;
+  height: 99% !important;
+}
+#root {
+  background-color: rgb(33, 37, 41);
+}
+div.nav {
+  background-color: rgb(71, 79, 87) !important;
+  border-radius: 5px;
+}
+.nav-link {
+  background-color: rgb(43, 48, 53);
+  border-radius: 5px;
+  margin: 0.5vh 0px 0.25vh 0.5vw;
+  color: rgb(230, 228, 222);
+}
+.nav-link:hover {
+  color: rgb(136, 134, 129);
+  background-color: rgb(21, 25, 29) !important;
+}
+.nav-link:focus {
+  color: rgb(136, 134, 129);
+  background-color: rgb(21, 25, 29) !important;
+}
+
+.input-group {
+  margin: 5px;
+  .input-group-text {
+    color: rgb(230, 228, 222);
+    background-color: rgb(21, 25, 29);
+    border-color: rgb(230, 228, 222);
+  }
+  .form-control {
+    background-color: rgb(71, 79, 87) !important;
+    color: rgb(230, 228, 222);
+  }
+}
+form {
+  background-color: rgb(43, 48, 53) !important;
+}
