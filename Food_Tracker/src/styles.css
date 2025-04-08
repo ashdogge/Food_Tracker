@@ -45,3 +45,14 @@ div.nav {
 form {
   background-color: rgb(43, 48, 53) !important;
 }
+
+button {
+  border: 0ch;
+  background: color 0;
+  padding-block: 1px;
+  padding-inline: 6px;
+  display: flex;
+  text-align: align 0;
+  appearance: 0;
+  background-color:rgba(240, 248, 255, 0)
+}
