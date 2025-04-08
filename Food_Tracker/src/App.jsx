@@ -16,8 +16,8 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<FoodsList />} />
+        <Route path="/food/add" element={<FoodForm />} />
         <Route path="/food/edit/:id" element={<FoodForm />} />
-        <Route path="/food/add/" element={<FoodForm />} />
         <Route path="/food/delete/:id" element={<FoodDeleteConfirm />} />
         <Route path="/food/entries" element={<FoodEntriesList />} />
       </Routes>

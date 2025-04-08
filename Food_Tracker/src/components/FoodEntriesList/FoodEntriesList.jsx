@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FoodEntry } from "../FoodEntry/FoodEntry";
 import FoodButtons from "../FoodButtons/FoodButtons";
-import { Button } from "react-bootstrap";
+import { Table } from "react-bootstrap";
 export const FoodEntriesList = () => {
   // << .Initialize foodEntries state to null >>
 
@@ -50,12 +50,28 @@ export const FoodEntriesList = () => {
   // Define the layout to display each food item within
   return (
     <section className="d-flex flex-wrap mt-5 p-5 bg-dark">
-      {/* map the 'foods' array into a list */}
-      {entries.map((foodEntry) => (
-        <div className="" key={foodEntry._id}>
-          <FoodEntry food={foodEntry} />
-        </div>
-      ))}
+      <Table striped bordered hover variant="dark">
+        <thead>
+          <tr>
+            <th>Food</th>
+            <th>Calories</th>
+            <th>Fat</th>
+            <th>Protein</th>
+            <th>Sodium</th>
+            <th>Potassium</th>
+            <th>Carbs</th>
+            <th>Fiber</th>
+            <th>Sugars</th>
+            <th>Eaten on</th>
+          </tr>
+        </thead>
+        <tbody className="text-start">
+          {/* map the 'foods' array into a list */}
+          {entries.map((foodEntry) => (
+            <FoodEntry entry={foodEntry} />
+          ))}
+        </tbody>
+      </Table>
     </section>
   );
 };

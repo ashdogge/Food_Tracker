@@ -2,6 +2,16 @@ import React from "react";
 import { Table } from "react-bootstrap";
 import FoodButtons from "../FoodButtons/FoodButtons";
 
+// << TODO: Move this to its own helper file >>
+
+function nameFormat(string) {
+  return string
+    .toLowerCase()
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
 export const Food = ({ food }) => {
   const {
     _id,
@@ -17,7 +27,7 @@ export const Food = ({ food }) => {
   return (
     <div className="card m-1 bg-dark border-light textColor">
       <div className="card-header text-center display-6 fs-3 h-25 border-light border-1 fw-semibold">
-        {name}
+        {nameFormat(name)}
       </div>
       <FoodButtons food={food} />
       <Table striped bordered hover variant="dark">

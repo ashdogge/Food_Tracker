@@ -51,21 +51,22 @@ const FoodForm = () => {
           } catch (err) {
             setError(err);
           }
+          setLoading(false);
         };
         fetchData();
-        setLoading(false);
       } else {
         // << If foodData exists, initialize the form state with it >>
-
-        setName(foodData.name);
-        setCalories(foodData.calories);
-        setFat(foodData.fat);
-        setSodium(foodData.sodium);
-        setPotassium(foodData.potassium);
-        setCarbsTotal(foodData.carbs.total);
-        setSugar(foodData.carbs.sugar);
-        setFiber(foodData.carbs.fiber);
-        setProtein(foodData.protein);
+        if (foodData) {
+          setName(foodData.name);
+          setCalories(foodData.calories);
+          setFat(foodData.fat);
+          setSodium(foodData.sodium);
+          setPotassium(foodData.potassium);
+          setCarbsTotal(foodData.carbs.total);
+          setSugar(foodData.carbs.sugar);
+          setFiber(foodData.carbs.fiber);
+          setProtein(foodData.protein);
+        }
       }
     }
   }, [id, foodData]);
@@ -152,7 +153,7 @@ const FoodForm = () => {
 
     <Form onSubmit={handleSubmit} className=" form-control text-light">
       <h2 className="mb-5 display-4">{id ? "Edit" : "Create"}</h2>
-
+      {/* < TODO: Move message/error display to its own component > */}
       {message && <Alert variant="success">{message}</Alert>}
       {error && <Alert variant="danger">{error.message}</Alert>}
       <InputGroup>

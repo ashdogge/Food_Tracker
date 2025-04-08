@@ -65,18 +65,18 @@ export const FoodButtons = ({
   }
 
   return (
-    <div className="d-flex link-underline-opacity-0 ms-2 me-2">
+    <div className="d-flex link-underline-opacity-0 ms-2 me-2 fs-6">
       <a
-        className="fs-6 link-primary order-1 me-auto"
+        className="link-primary me-auto"
         onClick={() => addEntry(_id)}
         href="#"
       >
         ✚
       </a>
-      <a className="fs-6 link-light order-2 me-1" onClick={editNav} href="#">
+      <a className=" link-light me-1" onClick={editNav} href="#">
         ✎
       </a>
-      <a className="fs-6 link-danger order-3" onClick={deleteNav} href="#">
+      <a className="link-danger " onClick={deleteNav} href="#">
         ✕
       </a>
     </div>
