@@ -24,20 +24,31 @@ function formatDate(date) {
   return dateFormat.format(new Date(date));
 }
 export const FoodEntry = ({ entry }) => {
+  const { _id: entryId, eatenAt, food } = entry;
+
+  //  << Check that food still exists in the database >>
+  //  << todo: Better handling for this in API >>
+  if (!food) {
+    return (
+      <tr>
+        <td colSpan={10} className="text-center fst-italic text-danger">
+          [Food deleted]
+        </td>
+      </tr>
+    );
+  }
+
   const {
-    _id: entryId,
-    eatenAt,
-    food: {
-      _id: foodId,
-      name,
-      calories,
-      fat,
-      sodium,
-      potassium,
-      carbs: { total, fiber, sugar },
-      protein,
-    },
-  } = entry;
+    _id: foodId,
+    name,
+    calories,
+    fat,
+    sodium,
+    potassium,
+    carbs: { total, fiber, sugar },
+    protein,
+  } = food;
+
   // << Entry display >>
   return (
     <>
