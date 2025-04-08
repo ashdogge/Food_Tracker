@@ -25,6 +25,9 @@ const FoodDeleteConfirm = () => {
 
   const [foodData, setFoodData] = useState(location.state?.food || null);
   const [error, setError] = useState(null);
+  if (loading || !foodData) {
+    return <div>Loading…</div>;
+  }
 
   useEffect(() => {
     // << If the ID is present, check for foodData in state
@@ -44,9 +47,10 @@ const FoodDeleteConfirm = () => {
         } catch (err) {
           setError(err);
         }
+
+        setLoading(false);
       };
       fetchData();
-      setLoading(false);
     } else {
       // << If foodData exists, initialize the form state with it >>
 
@@ -114,10 +118,10 @@ const FoodDeleteConfirm = () => {
       </div>
 
       <div>
-        <Button variant="danger" onClick={handleSubmit}>
+        <Button variant="danger me-1" onClick={handleSubmit}>
           Delete
         </Button>
-        <Button variant="info" href="/">
+        <Button variant="primary" href="/">
           Cancel
         </Button>
       </div>

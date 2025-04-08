@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router";
+import { useLocation, useParams, useNavigate } from "react-router";
 import { ButtonGroup, Button } from "react-bootstrap";
-import { useNavigate } from "react-router";
 
 export const FoodButtons = ({
   food: {
@@ -65,20 +64,16 @@ export const FoodButtons = ({
   }
 
   return (
-    <div className="d-flex link-underline-opacity-0 ms-2 me-2 fs-6">
-      <a
-        className="link-primary me-auto"
-        onClick={() => addEntry(_id)}
-        href="#"
-      >
+    <div className="d-flex link-underline-opacity-0 fs-6">
+      <button className="link-primary me-auto" onClick={() => addEntry(_id)}>
         ✚
-      </a>
-      <a className=" link-light me-1" onClick={editNav} href="#">
+      </button>
+      <button className="link-light me-1" onClick={editNav}>
         ✎
-      </a>
-      <a className="link-danger " onClick={deleteNav} href="#">
+      </button>
+      <button className="link-danger " onClick={deleteNav}>
         ✕
-      </a>
+      </button>
     </div>
   );
 };
